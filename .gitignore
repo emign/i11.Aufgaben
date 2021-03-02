@@ -1,0 +1,5 @@
+# Project exclude paths
+/.gradle/
+/gradle/
+/Lektionen/01.Graphen/build/
+/Lektionen/01.Graphen/build/classes/kotlin/jvm/main/
