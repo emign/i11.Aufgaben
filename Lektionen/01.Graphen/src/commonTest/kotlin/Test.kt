@@ -1,8 +1,9 @@
-import com.soywiz.korge.*
-import com.soywiz.korim.color.Colors
+import com.soywiz.korge.tests.*
 
+import kotlin.test.*
 
-suspend fun main() = Korge(width = 512, height = 512, bgcolor = Colors.BLACK) {
+class GraphenTest : KorgeTest() {
+
     val greifenberg = Knoten ("Greifenberg")
     val stegen = Knoten ("Stegen")
     val schondorf = Knoten ("Schondorf")
@@ -29,4 +30,24 @@ suspend fun main() = Korge(width = 512, height = 512, bgcolor = Colors.BLACK) {
     val kanten = listOf(greifenBergStegen, schondorfGreifenberg, uttingHerrsching, uttingSchondorf, diessenFischen, diessenUtting, fischenAndechs, andechsHerrsching, herrschingStegen, diessenStegen, diessenHerrsching)
 
     val ammerseeRundfahrt = Graph(knoten, kanten)
+
+    @Test
+    fun testSucheKnotenByName() {
+        assertTrue { ammerseeRundfahrt.sucheKnoten(knoten.random().inhalt.ortsname) }
+    }
+
+    @Test
+    fun testSucheKnotenByKnoten() {
+        assertTrue { ammerseeRundfahrt.sucheKnoten(knoten.random()) }
+    }
+
+    @Test
+    fun testSucheKnotenByKnotenFail() {
+        assertFalse { ammerseeRundfahrt.sucheKnoten(Knoten("Dummyknoten")) }
+    }
+
+    @Test
+    fun testSucheKnotenByNameFail() {
+        assertFalse { ammerseeRundfahrt.sucheKnoten("München") }
+    }
 }
