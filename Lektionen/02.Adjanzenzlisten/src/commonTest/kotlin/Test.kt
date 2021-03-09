@@ -4,7 +4,6 @@ import kotlin.test.*
 
 class GraphenTest : KorgeTest() {
 
-
     val greifenberg = Knoten ("Greifenberg")
     val stegen = Knoten ("Stegen")
     val schondorf = Knoten ("Schondorf")
@@ -55,7 +54,7 @@ class GraphenTest : KorgeTest() {
     @Test
     fun testNachbarFuerKnoten() {
         val liste = listOf(stegen, herrsching, fischen, utting)
-        assertTrue( ammerseeRundfahrt.gibNachbarnFuer(diessen).all { it in liste })
+        ammerseeRundfahrt.gibNachbarnFuer(diessen)?.let { assertTrue( it.all { it in liste }) }
     }
 
 
@@ -63,9 +62,8 @@ class GraphenTest : KorgeTest() {
     @Test
     fun testNachbarFuerKnotenString() {
         val liste = listOf(stegen, utting, diessen, andechs)
-        assertTrue( ammerseeRundfahrt.gibNachbarnFuer("Herrsching").all { it in liste })
+        ammerseeRundfahrt.gibNachbarnFuer("Herrsching")?.let { assertTrue( it.all { it in liste }) }
     }
-
 
 
     @Test
@@ -81,7 +79,7 @@ class GraphenTest : KorgeTest() {
 
     @Test
     fun testEnfernungRandomKante() {
-        val randomKante = ammerseeRundfahrt.kanten.random()
+        val randomKante = kanten.random()
         assertEquals(randomKante.gewicht, ammerseeRundfahrt.gibEntfernungZwischen(randomKante.start, randomKante.end))
     }
 }
