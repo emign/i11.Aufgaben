@@ -50,4 +50,37 @@ class GraphenTest : KorgeTest() {
     fun testSucheKnotenByNameFail() {
         assertFalse { ammerseeRundfahrt.sucheKnoten("München") }
     }
+
+    @Test
+    fun testNachbarFuerKnoten() {
+        val liste = listOf(stegen, herrsching, fischen, utting)
+        assertTrue( ammerseeRundfahrt.gibNachbarnFuer(diessen).all { it in liste })
+    }
+
+
+
+    @Test
+    fun testNachbarFuerKnotenString() {
+        val liste = listOf(stegen, utting, diessen, andechs)
+        assertTrue( ammerseeRundfahrt.gibNachbarnFuer("Herrsching").all { it in liste })
+    }
+
+
+
+    @Test
+    fun testEntfernungZwischenKnoten() {
+        assertEquals(31, ammerseeRundfahrt.gibEntfernungZwischen(utting, herrsching))
+    }
+
+
+    @Test
+    fun testEntfernungZwischenKnotenString() {
+        assertEquals(107, ammerseeRundfahrt.gibEntfernungZwischen("Diessen", "Stegen"))
+    }
+
+    @Test
+    fun testEnfernungRandomKante() {
+        val randomKante = ammerseeRundfahrt.kanten.random()
+        assertEquals(randomKante.gewicht, ammerseeRundfahrt.gibEntfernungZwischen(randomKante.start, randomKante.end))
+    }
 }

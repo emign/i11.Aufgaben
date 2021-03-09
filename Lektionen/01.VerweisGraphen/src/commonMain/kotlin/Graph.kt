@@ -40,4 +40,14 @@ class Graph(val knoten : List<Knoten>, val kanten : List<Kante>) {
         }
         return entfernung
     }
+
+    fun gibEntfernungZwischen(start : String, ziel: String) : Int {
+        var entfernung = Int.MAX_VALUE
+        kanten.forEach {
+            if (it.start.inhalt.ortsname == start && it.end.inhalt.ortsname == ziel || it.start.inhalt.ortsname == ziel && it.end.inhalt.ortsname == start) {
+                entfernung = it.gewicht
+            }
+        }
+        return entfernung
+    }
 }
