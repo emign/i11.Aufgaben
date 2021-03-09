@@ -4,6 +4,7 @@ import kotlin.test.*
 
 class GraphenTest : KorgeTest() {
 
+
     val greifenberg = Knoten ("Greifenberg")
     val stegen = Knoten ("Stegen")
     val schondorf = Knoten ("Schondorf")

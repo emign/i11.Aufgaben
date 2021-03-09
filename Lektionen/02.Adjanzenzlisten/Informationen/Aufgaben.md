@@ -10,7 +10,9 @@ Im einfachsten Fall wird in einem Array für jeden Knoten eine einfach verkettet
 
 ## Aufgabe 1
 Implementieren Sie einen Adjazenzlistengraph 
-Als Unterstützung gibt sind Unit-Tests implementiert:
+Als Unterstützung gibt sind Unit-Tests implementiert.
+Achtung: Die Kanten und Knoten sind weiterhin als Klassen zu implementieren. Aber sie müssen nun im Graph-Konstruktor entsprechend
+in die Adjazenzlisten eingebaut werden.
 
 
 ## Aufgabe 3
