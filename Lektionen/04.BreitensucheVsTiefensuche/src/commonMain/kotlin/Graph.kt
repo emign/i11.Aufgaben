@@ -40,49 +40,8 @@ class Graph(knoten : List<Knoten>, val kanten : List<Kante>) {
         return entfernung
     }
 
-    fun breitenSuche(start: Knoten, gesuchterKnoten: Knoten) : String{
-        var returnString = ""
-        var schlange = Queue<Knoten>(start)
-        while (schlange.isNotEmpty()){
-            val aktuellerKnoten = schlange.dequeue()
-            if (!aktuellerKnoten.besucht){
-                aktuellerKnoten.besucht = true
+    fun breitenSuche(start: Knoten, gesuchterKnoten: Knoten) : Nothing = TODO()
 
-                if (aktuellerKnoten.inhalt.ortsname == gesuchterKnoten.inhalt.ortsname){
-                    returnString+="==>${aktuellerKnoten.inhalt.ortsname}"
-                    break
-                }
-                gibNachbarnFuer(aktuellerKnoten)?.forEach {
-                    schlange.enqueue(it)
-                }
-                returnString+="-->${aktuellerKnoten.inhalt.ortsname}"
-            }
-            }
-
-        return returnString
-    }
-
-    fun tiefenSuche(start: Knoten, gesuchterKnoten: Knoten) : String{
-        var returnString = ""
-        var schlange = Stack<Knoten>(start)
-        while (schlange.isNotEmpty()){
-            val aktuellerKnoten = schlange.pop()
-            if (!aktuellerKnoten.besucht){
-                aktuellerKnoten.besucht = true
-
-                if (aktuellerKnoten.inhalt.ortsname == gesuchterKnoten.inhalt.ortsname){
-                    returnString+="==>${aktuellerKnoten.inhalt.ortsname}"
-                    break
-                }
-                gibNachbarnFuer(aktuellerKnoten)?.forEach {
-                    schlange.push(it)
-                }
-                returnString+="-->${aktuellerKnoten.inhalt.ortsname}"
-            }
-        }
-
-        return returnString
-    }
-
+    fun tiefenSuche(start: Knoten, gesuchterKnoten: Knoten) : Nothing = TODO()
 
 }
